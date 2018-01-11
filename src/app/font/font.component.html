@@ -1,0 +1,56 @@
+<div class="container">
+  <button class="save-button">Save</button>
+<input class="page-title" type="text" [(ngModel)]="font.title" >
+
+<div class="fontForm">
+  <div class="row">
+    <div class="col col-half">
+      <label for="fontFamily">Font Family</label>
+      <select id="fontFamily" [(ngModel)]="font.fontFamily">
+        <option *ngFor="let f of instaledFonts" [value]="f">{{f}}</option>
+        
+      </select>
+    </div>
+
+    <div class="col col-half">
+      <label for="fontWeight">Weight</label>
+      <select id="fontWeight" [(ngModel)]='font.weight'>
+        <option *ngFor="let w of weights" [value]="w.v">{{w.t}}</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col col-third">
+      <label for="size">size</label>
+      <input id="size" [(ngModel)]="font.size" type="number" min="1" max="100">
+
+    </div>
+    <div class="col col-third">
+  <label for="letterSpacing">Letter Spacing</label>
+  <input id="letterSpacing" [(ngModel)]='font.letterSpacing' type="number" min="1" max="100" step="1">
+
+    </div>
+    <div class="col col-third">
+
+  <label for="lineheight">Line Height</label>
+  <input id="lineheight" [(ngModel)]="font.lineheight" type="number" min="8" max="72">
+
+    </div>
+  </div>
+
+  <select [(ngModel)]="previewType">
+    <option value="1">Arabic</option>
+    <option value="2">Latin</option>
+    <option value="3">Chifers</option>
+  </select>
+  <div class="txt-preview" [style.fontSize]='font.size+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.weight'
+    [style.lineHeight]='font.lineHeight' [style.textSpacing]='font.textSpacing'>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem pariatur ratione iure!.
+  </div>
+
+
+
+</div>
+</div>

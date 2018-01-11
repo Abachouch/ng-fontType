@@ -1,1 +1,9 @@
-<h1>List Fonts</h1>
+
+<div class="list-fonts">
+
+        <h1>List Fonts</h1>
+        <div routerLink="/font" class="add-new">
+                <h2 class="title">ADD NEW</h2>
+        </div>
+<app-list-font-item *ngFor="let f of savedFonts" [font]="f" ></app-list-font-item>
+</div>

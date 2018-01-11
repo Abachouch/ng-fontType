@@ -1,17 +1,72 @@
 
 export class Font {
+  // title : Style tytle , i stor this value in localStorage as key with a cell value : '_' .
   title: string;
-  fontFamily: string;
-  weight: number;
-  fColor: string;
-  bgColor: string;
-  size: number;
-  lineHeight: number;
-  letterSpacing: number;
+  // background-color : RGB value
+  backgroundColor: string;
+  // color : RGB value;
+  color: string;
+  // font-style: normal|italic|oblique|initial|inherit;
+  fontStyle: string;
+  // font-variant: normal|small-caps|initial|inherit;
+  fontVariant: string;
+  // font-weight : font-weight: normal|bold|bolder|lighter|number [100 , 900]|initial|inherit;
+  fontWeight: number;
 
-  constructor( title: string , fontFamily: string , weight: number){
-    this.title = title ;
-    this.fontFamily = fontFamily ;
-    this.weight = weight ;
+  // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded
+  // |extra-expanded|ultra-expanded|initial|inherit;
+
+  fontStretch: string;
+  // font-size : [1,72] + 'px' ;
+  fontSize: number;
+  // line-height :[0-72] +'px'
+  lineHeight: number;
+  // font-family:
+  fontFamily: string;
+  // text-decoration: none|underline|overline|line-through|initial|inherit;
+  textDecoration: string;
+  // text-transform: none|capitalize|uppercase|lowercase|initial|inherit;
+  textTransform: string;
+  // text-indent : [0 , 72]
+  textIndent: number;
+  // letter-spacing : [0, 72]
+  letterSpacing: number;
+  // word-spacing : [0 , 72]
+  wordSpacing: number;
+  // text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
+  textShadow: string;
+  /**
+   * init Font object
+   * @param title :string
+   * @param fontFamily [:string]
+   * @param weight [:number]
+   * @param size [:number]
+   * @param fColor [:string]
+   * @param bgColor [:string]
+   * @param lineHeight [:number]
+   * @param letterSpacing [:number]
+   */
+  constructor(title: string) {
+    this.title = title;
   }
+  getByName() {
+    const obj: Font = JSON.parse(localStorage.getItem(this.title.substring(1)));
+    this.backgroundColor = obj.backgroundColor;
+    this.color = obj.color;
+    this.fontFamily = obj.fontFamily;
+    this.fontSize = obj.fontSize;
+    this.fontStretch = obj.fontStretch;
+    this.fontStyle = obj.fontStyle;
+    this.fontVariant = obj.fontVariant;
+    this.fontWeight = obj.fontWeight;
+    this.letterSpacing = obj.letterSpacing;
+    this.lineHeight = obj.lineHeight;
+    this.textDecoration = obj.textDecoration;
+    this.textIndent = obj.textIndent;
+    this.textShadow = obj.textShadow;
+    this.textTransform = obj.textTransform;
+    this.wordSpacing = obj.wordSpacing;
+  }
+  // toString = function () {return JSON.stringify(this)};
+  // constructFromString = function(json:string){this = JSON.parse(json)};
 }

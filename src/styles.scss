@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+
+$clr-black1: #030303;
+$clr-black2: #0f0229;
+$clr-blue1: #3261e2;
+$clr-white1: #f1f1f1;
+$clr-white2: #d8d8d8;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: $clr-white1;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1  {
+  margin-top: 32px;
+  color: $clr-black1;
+  display: inline-block;
+  font-size: 2rem ;
+  &::after {
+    content: " ";
+    display: block;
+    background-color: $clr-blue1;
+    height: 5px;
+    width: 100%;
+    margin-top: 2px;
+  }
+}
+
+.main-header {
+  height: 45px;
+  padding: 8px 16px;
+  background-color: $clr-blue1;
+  text-align: left;
+  margin: -16px;
+  .return {
+    width: 30px;
+    fill: $clr-white1;
+  }
+  .title {
+    color: $clr-white1;
+    vertical-align: 9px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+.container {
+  padding: 16px;
+  clear: both;
+}
+
+.list-fonts {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.list-font-item {
+  background-color: $clr-white2;
+  padding: 16px 16px 0 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+  .title {
+    color: $clr-black2;
+    margin: 0;
+  }
+  .commands {
+    &::before {
+      content: "";
+      display: block;
+      background-color: $clr-white1;
+      height: 1px;
+      /**
+        */
+      letter-spacing: 2;
+      line-height: 0cm;
+    }
+    list-style: none;
+    padding: 0;
+    text-align: right;
+    li {
+      display: inline-block;
+      padding: 4px;
+      color: $clr-black2;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      cursor: pointer;
+      &:hover {
+        color: $clr-blue1;
+      }
+    }
+  }
+}
+
+.add-new {
+  background-color: $clr-white2;
+  padding: 8px 16px;
+  .title {
+    color: $clr-black1;
+    text-indent: 16px;
+  }
+}
+
+.row {
+clear: both ;
+  padding: 16px 0px;
+  .col {
+    float: right;
+    padding: 16px;
+    &.col-half {
+      width: 50%;
+    }
+    &.col-third{
+        width: 33.33% ;
+    }
+  }
+}
+
+input , select {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px $clr-blue1 solid;
+  &:focus {
+    outline: none;
+  }
+}
+label{
+    font-size: .8rem ;
+    font-weight: 700 ;
+    color: $clr-black2 ;
+}
+.page-title{
+    color: $clr-black2 ;
+    font-size: 2rem ;
+    border-bottom-width: 3px ;
+}
+.save-button{
+    color: $clr-white1 ;
+    background-color: $clr-blue1;
+    border-radius: 2px ;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.699) ;
+    font-size: .8rem ;
+    font-weight: 700 ;
+    padding: 10px 22px ;
+    float: right ;
+    margin: 16px 0 ;
+    border: 0 ;
+}
