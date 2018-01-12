@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Font } from '../models/Font';
+import 'rxjs/add/operator/switchMap';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-font',
@@ -10,15 +13,40 @@ import { Font } from '../models/Font';
 export class FontComponent implements OnInit {
 
   font: Font = new Font('untitled');
-
   instaledFonts = ['Roboto', 'open Sans', 'tahoma', 'verdana', 'shill'];
-  weights = [{ v: '100', t: 'thin' }, { v: '400', t: 'normal' }, { v: '500', t: 'meduim'}, { v: '700', t: 'blod' } ];
-textPreview: string;
-previewStyle;
-constructor() {
-}
+  weights = [{ v: '100', t: 'thin' }, { v: '400', t: 'normal' }, { v: '500', t: 'meduim' }, { v: '700', t: 'blod' }];
+  textPreview: string;
+  previewStyle;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
 
-ngOnInit() {
-}
+    const title = this.route.snapshot.paramMap.get('title');
+    if (title) {
+      // set title
+      this.font.title = title;
+      // construct object
+      this.font.constructFromDatabase();
+      
+    }
+
+    // this.route.params.subscribe(params => console.log(params));
+
+
+    this.font.fontFamily = 'tahoma';
+    this.font.fontSize = 16;
+    this.font.fontWeight = 400;
+    this.font.lineHeight = 1;
+    this.font.letterSpacing = 1;
+  }
+
+  save() {
+    this.font.saveToDatabase();
+  }
+  ngOnInit() {
+
+    
+  }
 
 }

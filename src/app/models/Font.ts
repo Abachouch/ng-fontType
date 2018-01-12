@@ -12,14 +12,12 @@ export class Font {
   fontVariant: string;
   // font-weight : font-weight: normal|bold|bolder|lighter|number [100 , 900]|initial|inherit;
   fontWeight: number;
-
   // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded
   // |extra-expanded|ultra-expanded|initial|inherit;
-
   fontStretch: string;
   // font-size : [1,72] + 'px' ;
   fontSize: number;
-  // line-height :[0-72] +'px'
+  // line-height :[0-72] + 'px'
   lineHeight: number;
   // font-family:
   fontFamily: string;
@@ -29,7 +27,7 @@ export class Font {
   textTransform: string;
   // text-indent : [0 , 72]
   textIndent: number;
-  // letter-spacing : [0, 72]
+  // letter-spacing : [0, 72].
   letterSpacing: number;
   // word-spacing : [0 , 72]
   wordSpacing: number;
@@ -49,6 +47,35 @@ export class Font {
   constructor(title: string) {
     this.title = title;
   }
+  /**
+   * retrive this object from localstorage
+   */
+  constructFromDatabase() {
+    const obj: Font = JSON.parse(localStorage.getItem(this.title.substring(1)));
+    this.fontFamily = obj.fontFamily;
+    this.fontSize = obj.fontSize;
+    this.fontWeight = obj.fontWeight;
+    this.letterSpacing = obj.letterSpacing;
+    this.lineHeight = obj.lineHeight;
+  }
+  /**
+   * add this object to localstorage.
+   */
+  saveToDatabase() {
+    if (this.isExist()) { return; }
+    const obj = {
+      'title': this.title, 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
+      , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight
+    };
+    localStorage.setItem('_' + this.title, JSON.stringify(obj));
+  }
+  /**
+   * check if already exist
+   */
+  isExist(): boolean {
+    return (localStorage.getItem('_' + this.title) === null) ? false : true;
+  }
+  // full retrive from localstorage ... (not used in this version)
   getByName() {
     const obj: Font = JSON.parse(localStorage.getItem(this.title.substring(1)));
     this.backgroundColor = obj.backgroundColor;
@@ -67,6 +94,4 @@ export class Font {
     this.textTransform = obj.textTransform;
     this.wordSpacing = obj.wordSpacing;
   }
-  // toString = function () {return JSON.stringify(this)};
-  // constructFromString = function(json:string){this = JSON.parse(json)};
 }

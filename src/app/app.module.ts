@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule  } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {FormsModule} from '@angular/forms' ;
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ListFontsComponent } from './list-fonts/list-fonts.component';
@@ -21,6 +21,7 @@ import { Router } from '@angular/router/src/router';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: ListFontsComponent },
+      { path: 'font/:title', component: FontComponent },
       { path: 'font', component: FontComponent }
     ])
   ],
