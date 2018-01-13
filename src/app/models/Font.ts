@@ -1,4 +1,3 @@
-
 export class Font {
   // title : Style tytle , i stor this value in localStorage as key with a cell value : '_' .
   title: string;
@@ -51,18 +50,19 @@ export class Font {
    * retrive this object from localstorage
    */
   constructFromDatabase() {
-    const obj: Font = JSON.parse(localStorage.getItem(this.title.substring(1)));
-    this.fontFamily = obj.fontFamily;
-    this.fontSize = obj.fontSize;
-    this.fontWeight = obj.fontWeight;
-    this.letterSpacing = obj.letterSpacing;
-    this.lineHeight = obj.lineHeight;
+    const obj: Font = JSON.parse(localStorage.getItem('_' + this.title));
+    if ( obj ) {
+      this.fontFamily = obj.fontFamily;
+      this.fontSize = obj.fontSize;
+      this.fontWeight = obj.fontWeight;
+      this.letterSpacing = obj.letterSpacing;
+      this.lineHeight = obj.lineHeight;
+    }
   }
   /**
    * add this object to localstorage.
    */
   saveToDatabase() {
-    if (this.isExist()) { return; }
     const obj = {
       'title': this.title, 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
       , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight

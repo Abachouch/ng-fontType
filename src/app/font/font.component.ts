@@ -28,7 +28,7 @@ export class FontComponent implements OnInit {
       this.font.title = title;
       // construct object
       this.font.constructFromDatabase();
-      
+      console.log(title) ;
     }
 
     // this.route.params.subscribe(params => console.log(params));

@@ -1,54 +1,54 @@
 <div class="container">
-  <button class="save-button" (click)="save()">Save</button>
-<input class="page-title" type="text" [(ngModel)]="font.title" >
-<p class="input-error" *ngIf="font.isExist()">invalid input</p>
-<div class="fontForm">
-  <div class="row">
-    <div class="col col-half">
-      <label for="fontFamily">Font Family</label>
-      <select id="fontFamily" [(ngModel)]="font.fontFamily">
-        <option *ngFor="let f of instaledFonts" [value]="f">{{f}}</option>
-      </select>
+  <button class="save-button" (click)="save()"> {{ font.isExist() ? 'edit' : 'save'}}</button>
+  <input class="page-title" type="text" [(ngModel)]="font.title">
+  <p class="input-error" *ngIf="font.isExist()">invalid input</p>
+  <div class="fontForm">
+    <div class="row">
+      <div class="col col-half">
+        <label for="fontFamily">Font Family</label>
+        <select id="fontFamily" [(ngModel)]="font.fontFamily">
+          <option *ngFor="let f of instaledFonts" [value]="f">{{f}}</option>
+        </select>
+      </div>
+
+      <div class="col col-half">
+        <label for="fontWeight">Weight</label>
+        <select id="fontWeight" [(ngModel)]='font.fontWeight'>
+          <option *ngFor="let w of weights" [value]="w.v">{{w.t}}</option>
+        </select>
+      </div>
     </div>
 
-    <div class="col col-half">
-      <label for="fontWeight">Weight</label>
-      <select id="fontWeight" [(ngModel)]='font.fontWeight'>
-        <option *ngFor="let w of weights" [value]="w.v">{{w.t}}</option>
-      </select>
+    <div class="row">
+      <div class="col col-third">
+        <label for="size">size</label>
+        <input id="size" [(ngModel)]="font.fontSize" type="number" min="1" max="100">
+
+      </div>
+      <div class="col col-third">
+        <label for="letterSpacing">Letter Spacing</label>
+        <input id="letterSpacing" [(ngModel)]='font.letterSpacing' type="number" min="1" max="100" step="1">
+
+      </div>
+      <div class="col col-third">
+
+        <label for="lineheight">Line Height</label>
+        <input id="lineheight" [(ngModel)]="font.lineHeight" type="number" min="0" max="5" step="0.1">
+
+      </div>
     </div>
+
+    <select [(ngModel)]="previewType">
+      <option value="ar">Arabic</option>
+      <option value="lt">Latin</option>
+      <option value="char">Chifers</option>
+    </select>
+    <div class="txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
+      [style.lineHeight]='font.lineHeight' [style.letterSpacing]='font.letterSpacing+"px"'>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem pariatur ratione iure!.
+    </div>
+
+
+
   </div>
-
-  <div class="row">
-    <div class="col col-third">
-      <label for="size">size</label>
-      <input id="size" [(ngModel)]="font.fontSize" type="number" min="1" max="100">
-
-    </div>
-    <div class="col col-third">
-  <label for="letterSpacing">Letter Spacing</label>
-  <input id="letterSpacing" [(ngModel)]='font.letterSpacing' type="number" min="1" max="100" step="1">
-
-    </div>
-    <div class="col col-third">
-
-  <label for="lineheight">Line Height</label>
-  <input id="lineheight" [(ngModel)]="font.lineHeight" type="number" min="0" max="5" step="0.1">
-
-    </div>
-  </div>
-
-  <select [(ngModel)]="previewType">
-    <option value="ar">Arabic</option>
-    <option value="lt">Latin</option>
-    <option value="char">Chifers</option>
-  </select>
-  <div class="txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
-    [style.lineHeight]='font.lineHeight' [style.letterSpacing]='font.letterSpacing+"px"'>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem pariatur ratione iure!.
-  </div>
-
-
-
-</div>
 </div>
