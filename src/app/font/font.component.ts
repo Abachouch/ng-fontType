@@ -15,7 +15,7 @@ export class FontComponent implements OnInit {
   font: Font = new Font('untitled');
   instaledFonts = ['Roboto', 'open Sans', 'tahoma', 'verdana', 'shill'];
   weights = [{ v: '100', t: 'thin' }, { v: '400', t: 'normal' }, { v: '500', t: 'meduim' }, { v: '700', t: 'blod' }];
-  textPreview: string;
+  previewType: string;
   previewStyle;
   constructor(
     private route: ActivatedRoute,
@@ -28,17 +28,16 @@ export class FontComponent implements OnInit {
       this.font.title = title;
       // construct object
       this.font.constructFromDatabase();
-      console.log(title) ;
+      console.log(title);
+    }else {
+      this.font.fontFamily = 'tahoma';
+      this.font.fontSize = 16;
+      this.font.fontWeight = 400;
+      this.font.lineHeight = 1;
+      this.font.letterSpacing = 1;
+      this.previewType = 'latin';
     }
 
-    // this.route.params.subscribe(params => console.log(params));
-
-
-    this.font.fontFamily = 'tahoma';
-    this.font.fontSize = 16;
-    this.font.fontWeight = 400;
-    this.font.lineHeight = 1;
-    this.font.letterSpacing = 1;
   }
 
   save() {
@@ -46,7 +45,7 @@ export class FontComponent implements OnInit {
   }
   ngOnInit() {
 
-    
+
   }
 
 }

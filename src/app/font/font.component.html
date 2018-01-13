@@ -1,7 +1,7 @@
 <div class="container">
   <button class="save-button" (click)="save()"> {{ font.isExist() ? 'edit' : 'save'}}</button>
   <input class="page-title" type="text" [(ngModel)]="font.title">
-  <p class="input-error" *ngIf="font.isExist()">invalid input</p>
+  <p class="input-error" *ngIf="font.isExist()">Already exist.</p>
   <div class="fontForm">
     <div class="row">
       <div class="col col-half">
@@ -39,9 +39,9 @@
     </div>
 
     <select [(ngModel)]="previewType">
-      <option value="ar">Arabic</option>
-      <option value="lt">Latin</option>
-      <option value="char">Chifers</option>
+      <option value="arabic">Arabic</option>
+      <option value="latin">Latin</option>
+      <option value="char">char</option>
     </select>
     <div class="txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
       [style.lineHeight]='font.lineHeight' [style.letterSpacing]='font.letterSpacing+"px"'>

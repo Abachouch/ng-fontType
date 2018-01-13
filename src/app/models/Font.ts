@@ -64,7 +64,7 @@ export class Font {
    */
   saveToDatabase() {
     const obj = {
-      'title': this.title, 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
+      'title': this.title, 'fontSize' : this.fontSize , 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
       , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight
     };
     localStorage.setItem('_' + this.title, JSON.stringify(obj));
