@@ -39,17 +39,24 @@
     </div>
 
     <div class="row">
-      <label for="previewType">Preview</label>
-    <select id="previewType" [(ngModel)]="previewType">
-      <option value="0">Arabic</option>
-      <option value="1">Latin</option>
-      <option value="2">char</option>
-    </select>
+      <div class="col col-half">
+        <label for="previewType">Preview</label>
+        <select id="previewType" [(ngModel)]="previewType">
+          <option value="0">Arabic</option>
+          <option value="1">Latin</option>
+          <option value="2">char</option>
+        </select>
+      </div>
+      <div class="col col-half">
+        <label for="Color">Colors</label>
+        <!-- <input class="color bg-color" [(ngModel)]="font.backgroundColor " type="color" id="Color">
+        <input class="color fg-color"  [(ngModel)]="font.color" type="color"> -->
+        <app-color-picker [color]="'#f2f'" ></app-color-picker>
+      </div>
     </div>
-    
-    <div class="txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
-      [style.lineHeight]='font.lineHeight' [style.letterSpacing]='font.letterSpacing+"px"'>
-      {{previewText[previewType]}}
+    <div class="row txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
+      [style.lineHeight]='font.lineHeight' [style.letterSpacing]='font.letterSpacing+"px"' [style.backgroundColor]='font.backgroundColor' [style.color]='font.color'>
+        {{previewText[previewType]}}
       <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem pariatur ratione iure!. -->
     </div>
 
