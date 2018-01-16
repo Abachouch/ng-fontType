@@ -6,7 +6,7 @@
         <div routerLink="/font" class=" row add-new">
                 <h2 class="title">ADD NEW</h2>
         </div>
-<app-list-font-item class="" *ngFor="let f of savedFonts" [font]="f" ></app-list-font-item>
+<app-list-font-item class="" *ngFor="let f of savedFonts" [font]="f" (deleted)="refresh()" ></app-list-font-item>
 <div *ngIf="cssModal" class="cssModal">
         <code>
 <pre>

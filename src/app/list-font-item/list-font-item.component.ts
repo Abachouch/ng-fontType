@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output , EventEmitter} from '@angular/core';
 import { Font } from '../models/Font';
 import { Title } from '@angular/platform-browser/src/browser/title';
+
 
 @Component({
   selector: 'app-list-font-item',
@@ -9,10 +10,16 @@ import { Title } from '@angular/platform-browser/src/browser/title';
 })
 export class ListFontItemComponent implements OnInit {
   @Input('font') font: Font;
+  @Output('deleted') deleted: EventEmitter<boolean> = new EventEmitter<boolean>() ;
   constructor() {
   }
 
   ngOnInit() {
   }
 
+  delete() {
+    const f = new Font(this.font.title);
+    f.delete() ;
+    this.deleted.emit(true) ;
+  }
 }

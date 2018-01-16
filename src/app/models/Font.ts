@@ -108,4 +108,8 @@ export class Font {
       '\n\tcolor :' + this.color + ' ;' +
       '\n}\n\n';
   }
+
+  delete() {
+    localStorage.removeItem('_' + this.title) ;
+  }
 }

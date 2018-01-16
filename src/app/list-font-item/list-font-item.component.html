@@ -2,8 +2,7 @@
     <h2 class="title">{{font.title}}</h2>
 <p>{{font.fontFamily}}</p>
 <ul class="commands">
-    <li>CSS</li>
     <li routerLink="/font/{{font.title}}" >EDIT</li>
-    <li>DELETE</li>
+    <li (click)="delete()" >DELETE</li>
 </ul>
 </div>

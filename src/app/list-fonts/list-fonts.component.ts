@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Font } from '../models/Font';
 import { ClassMethod } from '@angular/compiler/src/output/output_ast';
+import { EventListener } from '@angular/core/src/debug/debug_node';
 
 @Component({
   selector: 'app-list-fonts',
@@ -10,12 +11,11 @@ import { ClassMethod } from '@angular/compiler/src/output/output_ast';
 export class ListFontsComponent implements OnInit {
 
   savedFonts: Font[] = new Array();
-  cssModal = true;
+  cssModal = false;
   css = '';
   constructor() {
 
-    this.savedFonts = this.getAllFonts();
-
+    this.refresh() ;
   }
 
   getAllFonts = function () {
@@ -39,13 +39,16 @@ export class ListFontsComponent implements OnInit {
       let f: Font;
       this.css = '';
       this.savedFonts.map(k => {
-        f = new Font(k.title) ;
+        f = new Font(k.title);
         this.css += f.getCssFormat();
       });
       console.log('this.css2' + this.css);
     }
   }
 
+  refresh() {
+    this.savedFonts = this.getAllFonts();
+  }
   ngOnInit() {
   }
 
