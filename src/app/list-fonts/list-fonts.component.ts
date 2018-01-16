@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Font } from '../models/Font';
+import { ClassMethod } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-list-fonts',
@@ -8,26 +9,13 @@ import { Font } from '../models/Font';
 })
 export class ListFontsComponent implements OnInit {
 
-  savedFonts = new Array();
+  savedFonts: Font[] = new Array();
+  cssModal = true;
+  css = '';
   constructor() {
 
     this.savedFonts = this.getAllFonts();
 
-    console.log(this.savedFonts);
-
-    // this.savedFonts.push(new Font('Header1', 'Tahoma', 400, 20, '#f2ade3', '#2f2aaa', 1, 1));
-    // this.savedFonts.push(new Font('Header2', 'Open Sans', 400, 20, '#f2ade3', '#2f2aaa', 1, 1));
-    // this.savedFonts.push(new Font('Header3', 'Roboto', 400, 20, '#f2ade3', '#2f2aaa', 1, 1));
-    // this.savedFonts.push(new Font('Header4', 'Tahoma', 400, 20, '#f2ade3', '#2f2aaa', 1, 1));
-
-    // for (const f of this.savedFonts) {
-    //   localStorage.setItem('_' + f.title, JSON.stringify(f));
-    // }
-
-
-    // if (localStorage.fonts) {
-    //   this.savedFonts = localStorage.saveFonts;
-    // }
   }
 
   getAllFonts = function () {
@@ -40,6 +28,23 @@ export class ListFontsComponent implements OnInit {
     }
     return all;
   };
+
+  getCss() {
+    if (this.cssModal) {
+      this.cssModal = false;
+    } else {
+      this.cssModal = true;
+      console.log('this.saved fonts ' + this.savedFonts);
+      console.log('this.css' + this.css);
+      let f: Font;
+      this.css = '';
+      this.savedFonts.map(k => {
+        f = new Font(k.title) ;
+        this.css += f.getCssFormat();
+      });
+      console.log('this.css2' + this.css);
+    }
+  }
 
   ngOnInit() {
   }

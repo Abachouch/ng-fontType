@@ -2,8 +2,17 @@
 <div class="list-fonts">
 
         <h1>List Fonts</h1>
-        <div routerLink="/font" class="add-new">
+        <div class="save-button  cssBtn" (click)="getCss()">Get CSS</div>
+        <div routerLink="/font" class=" row add-new">
                 <h2 class="title">ADD NEW</h2>
         </div>
-<app-list-font-item *ngFor="let f of savedFonts" [font]="f" ></app-list-font-item>
+<app-list-font-item class="" *ngFor="let f of savedFonts" [font]="f" ></app-list-font-item>
+<div *ngIf="cssModal" class="cssModal">
+        <code>
+<pre>
+{{css}}                        
+ </pre>                               
+              
+        </code>
+        </div>
 </div>

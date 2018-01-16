@@ -51,13 +51,13 @@ export class Font {
    */
   constructFromDatabase() {
     const obj: Font = JSON.parse(localStorage.getItem('_' + this.title));
-    if ( obj ) {
+    if (obj) {
       this.fontFamily = obj.fontFamily;
       this.fontSize = obj.fontSize;
       this.fontWeight = obj.fontWeight;
       this.letterSpacing = obj.letterSpacing;
       this.lineHeight = obj.lineHeight;
-      this.color = obj.color ;
+      this.color = obj.color;
     }
   }
   /**
@@ -65,8 +65,8 @@ export class Font {
    */
   saveToDatabase() {
     const obj = {
-      'title': this.title, 'fontSize' : this.fontSize , 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
-      , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight , 'color' : this.color
+      'title': this.title, 'fontSize': this.fontSize, 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
+      , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight, 'color': this.color
     };
     localStorage.setItem('_' + this.title, JSON.stringify(obj));
   }
@@ -94,5 +94,18 @@ export class Font {
     this.textShadow = obj.textShadow;
     this.textTransform = obj.textTransform;
     this.wordSpacing = obj.wordSpacing;
+  }
+
+  getCssFormat() {
+    this.constructFromDatabase();
+    return '.' + this.title +
+      '{\n\tcolor: ' + this.color + ' ;' +
+      '\n\tfont-family :' + this.fontFamily + ' ;' +
+      '\n\tfont-weight :' + this.fontWeight + ' ;' +
+      '\n\tfont-size :' + this.fontSize + ' ;' +
+      '\n\tline-height :' + this.lineHeight + ' ;' +
+      '\n\tletter-spacing :' + this.letterSpacing + ' ;' +
+      '\n\tcolor :' + this.color + ' ;' +
+      '\n}\n\n';
   }
 }

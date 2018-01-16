@@ -152,6 +152,8 @@ label {
   border-bottom-width: 3px;
 }
 
+
+
 .save-button {
   color: $clr-white1;
   background-color: $clr-blue1;
@@ -163,6 +165,9 @@ label {
   float: right;
   margin: 16px 0;
   border: 0;
+}
+.cssBtn{
+  margin-top: 38px ;
 }
 
 #color-picker {
@@ -224,7 +229,21 @@ label {
     height: 35px;
   }
 }
-
+.cssModal{
+  position: absolute ;
+  top: 150px ;
+  bottom: 20px ;
+  left: 0;
+  right: 0 ;
+  overflow: auto ;
+  margin: auto ;
+  width: 100% ;
+  max-width: 480px ;
+  padding: 20px ;
+  background-color: $clr-white1 ;
+  box-shadow: -1px 0 3px rgba(0, 0, 0, 0.5) ;
+  border: 1px solid $clr-black2 ;
+}
 
 /*
  *  SCROLLBAR
@@ -254,3 +273,4 @@ div::-webkit-scrollbar-thumb {
   overflow: hidden ;
   border: 1px rgb(129, 128, 128) solid ;
 }
+
