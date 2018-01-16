@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output , EventEmitter} from '@angular/core';
 import { ColorsService } from '../colors.service';
+
 
 @Component({
   selector: 'app-color-picker',
@@ -7,7 +8,10 @@ import { ColorsService } from '../colors.service';
 })
 export class ColorPickerComponent implements OnInit {
   @Input() color;
-  isOpen = false;
+  @Output('close')
+  close: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output('chooseColor')
+  chooseColor: EventEmitter<string> = new EventEmitter<string>();
   colors: string[];
 
   constructor(cs: ColorsService) {
@@ -19,6 +23,16 @@ export class ColorPickerComponent implements OnInit {
     console.log(this.colors);
 
 
+  }
+
+  onChooseColor(color) {
+    this.color = color ;
+    console.log(color);
+    this.chooseColor.emit(this.color);
+  }
+
+  onhideColorPicker() {
+    this.close.emit(false) ;
   }
 
   ngOnInit() {

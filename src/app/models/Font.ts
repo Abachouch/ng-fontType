@@ -57,6 +57,7 @@ export class Font {
       this.fontWeight = obj.fontWeight;
       this.letterSpacing = obj.letterSpacing;
       this.lineHeight = obj.lineHeight;
+      this.color = obj.color ;
     }
   }
   /**
@@ -65,7 +66,7 @@ export class Font {
   saveToDatabase() {
     const obj = {
       'title': this.title, 'fontSize' : this.fontSize , 'fontFamily': this.fontFamily, 'fontWeight': this.fontWeight
-      , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight
+      , 'letterSpacing': this.letterSpacing, 'lineHeight': this.lineHeight , 'color' : this.color
     };
     localStorage.setItem('_' + this.title, JSON.stringify(obj));
   }

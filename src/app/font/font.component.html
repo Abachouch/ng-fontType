@@ -42,8 +42,8 @@
       <div class="col col-half">
         <label for="previewType">Preview</label>
         <select id="previewType" [(ngModel)]="previewType">
-          <option value="0">Arabic</option>
-          <option value="1">Latin</option>
+          <option value="0">Latin</option>
+          <option value="1">Arabic</option>
           <option value="2">char</option>
         </select>
       </div>
@@ -51,7 +51,8 @@
         <label for="Color">Colors</label>
         <!-- <input class="color bg-color" [(ngModel)]="font.backgroundColor " type="color" id="Color">
         <input class="color fg-color"  [(ngModel)]="font.color" type="color"> -->
-        <app-color-picker [color]="'#f2f'" ></app-color-picker>
+        <div (click)="showColorPicker()" class="colorPicker-btn"  [style.background]="font.color" ></div>
+        <app-color-picker [hidden]="!colorPicker" [color]="'#f2f'" (close)="hideColorPicker($event)" (chooseColor)="onColorChoosed($event)" ></app-color-picker>
       </div>
     </div>
     <div class="row txt-preview" [style.fontSize]='font.fontSize+"px"' [style.fontFamily]='font.fontFamily' [style.fontWeight]='font.fontWeight'
