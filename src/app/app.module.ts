@@ -6,15 +6,21 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListFontsComponent } from './list-fonts/list-fonts.component';
 import { ListFontItemComponent } from './list-font-item/list-font-item.component';
+import {ColorPickerComponent} from './color-picker/color-picker.component' ;
 import { FontComponent } from './font/font.component';
+
 import { Router } from '@angular/router/src/router';
+
+import {ColorsService} from './colors.service' ;
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListFontsComponent,
     ListFontItemComponent,
-    FontComponent
+    FontComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,9 @@ import { Router } from '@angular/router/src/router';
       { path: 'font', component: FontComponent }
     ])
   ],
-  providers: [],
+  providers: [
+    ColorsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
