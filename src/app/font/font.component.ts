@@ -13,7 +13,9 @@ export class FontComponent implements OnInit {
 
   font: Font = new Font('untitled');
   instaledFonts = ['Roboto', 'open Sans', 'tahoma', 'verdana', 'shill'];
-  weights = [{ v: '100', t: 'thin' }, { v: '400', t: 'normal' }, { v: '500', t: 'meduim' }, { v: '700', t: 'blod' }];
+  weights = [{ v: '100', t: 'Thin 100' }, { v: '200', t: 'Extra-Light 200' }, { v: '300', t: 'Light 300' }, { v: '400', t: 'Regular 400' },
+   { v: '500', t: 'Medium 500' }, { v: '600', t: 'Semi-Bold 600' }, { v: '700', t: 'Bold 700' }, { v: '800', t: 'semi-black 800' },
+   { v: '900', t: 'Black 900' }];
   previewType = 0;
   colorPicker = false;
   previewText: string[] = [
