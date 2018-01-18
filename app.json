@@ -1,0 +1,6 @@
+{
+    "name": "ng-font-type",
+    "description": "font.css generator",
+    "repository": "https://github.com/Abachouch/ng-fontType.git",
+    "keywords": ["Font", "CSS", "Angular5"]
+  }
