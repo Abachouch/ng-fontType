@@ -1,3 +1,4 @@
+
 "use strict";
 const express = require('express'),
       app = express(),
@@ -9,6 +10,7 @@ app.use(express.static(__dirname));
 app.use(morgan('dev'));
 
 app.get('/', function (req, res) {
+    console.log('get /');
   res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
